@@ -15,9 +15,6 @@ from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
 
-from django.conf import settings
-settings.configure()
-
 here = os.path.abspath(os.path.dirname(__file__))
 
 # Get the long description from the README file
