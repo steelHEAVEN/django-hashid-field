@@ -29,7 +29,7 @@ class Hashid(object):
         self._alphabet = alphabet
 
         # If integer, just move on, no need to decode!
-        if (isinstance(id, int) or isinstance(id, long)) and id >= 0:
+        if isinstance(id, int) and id >= 0:
             self._id = id
             return
 
@@ -88,15 +88,12 @@ class Hashid(object):
     def __int__(self):
         return self._id
 
-    def __long__(self):
-        return long(self._id)
-
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             return self._id == other._id and self._hashid == other._hashid
         if isinstance(other, six.string_types):
             return self._hashid == other
-        if isinstance(other, int) or isinstance(other, long):
+        if isinstance(other, int):
             return self._id == other
         return NotImplemented
 
