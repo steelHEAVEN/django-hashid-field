@@ -137,13 +137,9 @@ class HashidAutoField(HashidFieldMixin, models.AutoField):
 class HashidForeignKey(HashidFieldMixin, models.ForeignKey):
     description = "A Hashids obscured ForeignKey"
 
-    def __init__(self, salt=settings.HASHID_FIELD_SALT, min_length=7, alphabet=Hashids.ALPHABET,
-                 allow_int_lookup=settings.HASHID_FIELD_ALLOW_INT_LOOKUP, *args, **kwargs):
-
-        if 'to' not in kwargs:
-            kwargs['to'] = 'id'
-
-        super().__init__(salt, min_length, alphabet, allow_int_lookup, *args, **kwargs)
+    def __init__(self, to, **kwargs):
+        kwargs['to'] = to
+        super().__init__(**kwargs)
 
 
 # Monkey patch Django REST Framework, if it's installed, to throw exceptions if fields aren't explicitly defined in
