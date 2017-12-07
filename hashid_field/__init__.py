@@ -1,4 +1,4 @@
-from .field import HashidField, HashidAutoField, HashidForeignKey
+from .field import HashidField, HashidAutoField, HashidForeignKey, HashidOneToOneField
 from .hashid import Hashid
 
 __version__ = "2.0.4"
