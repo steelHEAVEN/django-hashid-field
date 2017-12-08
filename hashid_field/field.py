@@ -134,22 +134,6 @@ class HashidAutoField(HashidFieldMixin, models.AutoField):
     description = "A Hashids obscured AutoField"
 
 
-class HashidForeignKey(HashidFieldMixin, models.ForeignKey):
-    description = "A Hashids obscured ForeignKey"
-
-    def __init__(self, to, **kwargs):
-        kwargs['to'] = to
-        super().__init__(**kwargs)
-
-
-class HashidOneToOneField(HashidFieldMixin, models.OneToOneField):
-    description = "A Hashids obscured OneToOneField"
-
-    def __init__(self, to, **kwargs):
-        kwargs['to'] = to
-        super().__init__(**kwargs)
-
-
 # Monkey patch Django REST Framework, if it's installed, to throw exceptions if fields aren't explicitly defined in
 # ModelSerializers. Not doing so can lead to hard-to-debug behavior.
 try:
